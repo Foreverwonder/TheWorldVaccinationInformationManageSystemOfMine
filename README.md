@@ -1,6 +1,5 @@
 # TheWorldVaccinationInformationManageSystemOfMine
 完结撒花(40hours+)
-指导老师：张立敏
 /**
  *完结撒花
  *
