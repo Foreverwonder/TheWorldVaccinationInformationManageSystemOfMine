@@ -1,0 +1,78 @@
+drop database if exists covid_19;
+Create database covid_19;
+use covid_19;
+
+create table country(
+ country_id varchar(3) primary key,
+ country_name varchar(20) not null,
+ people varchar(20) not null,
+ vac_able int (1)
+);
+
+create table vac(
+ vac_id varchar(3) primary key,
+ vac_area varchar(20),
+ vac_name varchar(20),
+ vac_type varchar(20)
+);
+
+create table c_v(
+country_id varchar(3),
+vac_id varchar(3),
+vac_over_num varchar(20) not null,
+primary key(country_id,vac_id),
+foreign key (country_id) references country(country_id) on delete restrict on update restrict,
+foreign key (vac_id) references vac(vac_id) on delete restrict on update restrict
+);
+
+insert into country values('c01','China','1,400,050,000',1);
+insert into country values('c02','America','326,766,748',1);
+insert into country values('c03','Japan','127,185,332',0);
+insert into country values('c04','Korea','51,269,185',0);
+insert into country values('c05','Britain','66,573,504',1);
+insert into country values('c06','France','67,059,887',0);
+insert into country values('c07','Germany','82,293,457',1);
+insert into country values('c08','Russia','143,964,709',1);
+insert into country values('c09','India','1,354,051,854',0);
+insert into country values('c10','Pakistan','200,813,818',0);
+insert into country values('c11','Brazil','210,867,954',0);
+insert into country values('c12','Indonesia','266,794,980',0);
+
+
+insert into vac values('v01','America','Pfizer','mRNA messenger');
+insert into vac values('v02','America','Mardner','mRNA messenger');
+insert into vac values('v03','Britain','AstraZeneca','Adenovirus');
+insert into vac values('v04','Russia','Sputnik V','Adenovirus');
+insert into vac values('v05','China','Chinese medicine','inactivated');
+insert into vac values('v06','China','Firm sinovac','inactivated');
+
+
+insert into c_v values('c01','v05','107,000,000');
+insert into c_v values('c01','v06','107,000,000');
+insert into c_v values('c02','v01','143,000,000');
+insert into c_v values('c02','v02','143,000,000');
+insert into c_v values('c03','v01','913,341');
+insert into c_v values('c04','v01','1,070,000');
+insert into c_v values('c04','v03','1,070,000');
+insert into c_v values('c05','v03','33,700,000');
+insert into c_v values('c06','v03','10,400,000');
+insert into c_v values('c07','v01','12,900,000');
+insert into c_v values('c07','v03','12,900,000');
+insert into c_v values('c08','v04','10,600,000');
+insert into c_v values('c09','v03','60,500,000');
+insert into c_v values('c10','v05','1,200,000');
+insert into c_v values('c11','v06','17,700,000');
+insert into c_v values('c12','v06','10,400,000');
+
+
+
+
+
+drop table if exists blobtable;
+create table blobtable(
+   id int(1) primary key,
+   binaryfile blob
+);
+
+
+
